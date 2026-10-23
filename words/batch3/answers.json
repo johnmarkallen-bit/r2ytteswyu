@@ -1,4 +1,115 @@
 {
- "updated": "2026-10-23 01:29 +11",
- "answers": {}
+ "updated": "2026-10-24 10:09 +11",
+ "answers": {
+  "p68-14": [
+   {
+    "form": "sirawperri",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-4": [
+   {
+    "form": "pehr",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-10": [
+   {
+    "form": "pihtes",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p69-30": [
+   {
+    "form": "karlic",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-7": [
+   {
+    "form": "karer",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p69-21": [
+   {
+    "form": "pihs",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p69-3": [
+   {
+    "form": "karod",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-9": [
+   {
+    "form": "karer",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-11": [
+   {
+    "form": "terri",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p68-1": [
+   {
+    "form": "apel",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Nett": 1
+    }
+   }
+  ],
+  "p66-1": [
+   {
+    "form": "test",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "?": 1
+    }
+   }
+  ]
+ }
 }
