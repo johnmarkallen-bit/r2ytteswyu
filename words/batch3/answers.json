@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24 10:09 +11",
+ "updated": "2026-10-24 16:09 +11",
  "answers": {
   "p68-14": [
    {
@@ -98,6 +98,36 @@
     "people": 1,
     "areas": {
      "Nett": 1
+    }
+   }
+  ],
+  "p900-1": [
+   {
+    "form": "mai",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Kolonia": 1
+    }
+   }
+  ],
+  "p900-2": [
+   {
+    "form": "kehp",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Kolonia": 1
+    }
+   }
+  ],
+  "p66-1": [
+   {
+    "form": "mwahm",
+    "votes": 1,
+    "people": 1,
+    "areas": {
+     "Kolonia": 1
     }
    }
   ]
