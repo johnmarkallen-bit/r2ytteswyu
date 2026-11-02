@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pohnpeian to English</title>
+<style>
+:root{--g:#1f7a5a;--bg:#f6f3ec;--ink:#222;--err:#b3261e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:18px 16px 60px}
+h1{font-size:1.5rem;margin:.2em 0}.pilot{display:inline-block;background:#fde9b8;border-radius:99px;padding:2px 10px;font-size:.8rem;font-weight:600}
+.card{background:#fff;border-radius:14px;padding:16px;margin:14px 0;box-shadow:0 1px 3px #0002}
+label.t{display:block;font-weight:600;margin:14px 0 4px}.h{font-size:.88rem;color:#555;margin:2px 0 6px}
+textarea,input[type=text],select{width:100%;font:inherit;padding:12px;border:1px solid #bbb;border-radius:10px;background:#fff}
+textarea{min-height:110px}
+button{font:inherit;font-weight:600;border:0;border-radius:12px;padding:14px 18px;background:var(--g);color:#fff;min-height:48px}
+button.sec{background:#e5e1d6;color:#222}button:disabled{opacity:.55}
+.ck{display:flex;gap:10px;align-items:flex-start;margin:12px 0}.ck input{width:26px;height:26px;flex:none;margin-top:2px}
+.err{color:var(--err);font-weight:600;margin:6px 0}.hide{display:none!important}
+.bar{height:10px;background:#ddd;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--g)}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}audio{width:100%;margin-top:8px}
+.note{font-size:.9rem;color:#444}.code{font:700 1.2rem monospace;background:#eef6f1;padding:8px 12px;border-radius:8px;display:inline-block}
+</style></head><body><main>
+<span class="pilot">Pilot</span>
+<h1>Send us Pohnpeian to translate into English</h1>
+<p>Type some Pohnpeian, or send a voice recording (or both). It will be translated into English and sent back to you if you leave a contact. It helps with learning Pohnpeian and with building speech and translation tools. This is a small pilot with a limited group.</p>
+
+<form id="f" class="card" novalidate autocomplete="off">
+ <div class="hp"><label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label></div>
+
+ <label class="t" for="text">Pohnpeian text (optional)</label>
+ <textarea id="text" placeholder="Write it here"></textarea>
+
+ <label class="t" for="rec">Voice recording (optional)</label>
+ <div class="h">Use your phone's voice recorder or Voice Memos, then pick the file here. Most phone audio files work. Or record right here.</div>
+ <input type="file" id="rec" accept="audio/*,.m4a,.mp3,.aac,.amr,.3gp,.3g2,.wav,.ogg,.oga,.opus,.caf,.aif,.aiff,.flac,.wma,.mp4,.webm,.mov">
+ <div style="margin-top:10px"><button type="button" id="recBtn" class="sec hide">🎙️ Record now</button>
+ <button type="button" id="rmRec" class="sec hide">Remove recording</button></div>
+ <audio id="prev" controls class="hide"></audio>
+ <div id="recMsg" class="h"></div>
+
+ <label class="t" for="ctx">What it is / context</label>
+ <div class="h">For example: a story, greeting, song, sentence, or message.</div>
+ <textarea id="ctx" style="min-height:70px"></textarea>
+
+ <label class="t" for="eng">English meaning (optional)</label>
+ <div class="h">If you know it, you can write the English too.</div>
+ <textarea id="eng" style="min-height:60px"></textarea>
+
+ <label class="t" for="muni">Home municipality / dialect (optional)</label>
+ <select id="muni"><option value="">Not sure</option><option>Kitti</option><option>Madolenihmw</option><option>Nett</option><option>Sokehs</option><option>U</option><option>Mokil</option><option>Pingelap</option><option>Other</option></select>
+
+ <label class="t" for="reg">Register (optional)</label>
+ <select id="reg"><option value="">Not sure</option><option>Everyday</option><option>Respectful/honorific</option></select>
+
+ <div class="ck"><input type="checkbox" id="own"><label for="own">I wrote this myself, or it is a well-known public text, or I have permission to share it.</label></div>
+
+ <label class="t" for="contact">Contact for sending the English translation back (optional)</label>
+ <input type="text" id="contact" placeholder="Facebook name or email">
+ <div class="h">Used only to send the translation back. Kept apart from your text and recording. If you leave it blank, we cannot send the translation back.</div>
+
+ <h2 style="font-size:1.1rem;margin-top:22px">Permissions</h2>
+ <div class="ck"><input type="checkbox" id="c_adult"><label for="c_adult">I am 18 or older (or my parent or guardian agrees). <b>(required)</b></label></div>
+ <div class="ck"><input type="checkbox" id="c_tools"><label for="c_tools">OK to keep and use this for Pohnpeian language learning and for speech/translation tools. <b>(required)</b></label></div>
+ <div class="ck"><input type="checkbox" id="c_synth"><label for="c_synth">A synthetic (computer) voice may be made from my recording. (optional)</label></div>
+ <div class="ck"><input type="checkbox" id="c_public"><label for="c_public">My text and recording may be included in a dataset or model that is shared publicly. (optional)</label></div>
+ <p class="note">Native-speaker reviewers may read or hear what you send, to check it. No payment is promised.<br>
+ <b>Withdraw any time:</b> message the Ministry Page on Facebook (or whoever sent you this link) with your contributor code. Your text and recording are then removed from the dataset and not used in future training. Tools that were already trained cannot be un-trained.<br>
+ Consent text version v0.1-pilot-en. A Pohnpeian version of this text is still to be checked by a native speaker.</p>
+
+ <div id="err" class="err" role="alert"></div>
+ <div id="prog" class="hide"><div class="bar"><i id="barI"></i></div><div id="progT" class="h"></div></div>
+ <button type="submit" id="send" style="width:100%">Send ✓</button>
+</form>
+
+<div id="done" class="card hide"><h2>Kalahngan! Thank you 🙏</h2>
+ <p id="doneTxt"></p>
+ <p>Your contributor code (keep it if you ever want to withdraw):<br><span class="code" id="codeOut"></span></p>
+ <button class="sec" id="again" type="button">Send another</button></div>
+</main>
+<script>
+const CLOUD_NAME='oian1jam',PRESET='pohnpeian_submissions',PRESET_C='pohnpeian_submissions_contacts',CONSENT_VERSION='v0.1-pilot-en',MAXMB=60;
+const API='https://api.cloudinary.com/v1_1/'+CLOUD_NAME,$=i=>document.getElementById(i);
+let blob=null,blobName='',mr=null,stream=null,state=null;
+const rnd=n=>{const a=new Uint8Array(n);crypto.getRandomValues(a);return[...a].map(x=>'abcdefghijklmnopqrstuvwxyz0123456789'[x%36]).join('')};
+function contributor(){let c='';try{c=localStorage.pnContributor||''}catch(e){}if(!/^PC-[a-z0-9]{8}$/.test(c)){c='PC-'+rnd(8);try{localStorage.pnContributor=c}catch(e){}}return c}
+function setBlob(b,n){blob=b;blobName=n;const u=URL.createObjectURL(b);$('prev').src=u;$('prev').classList.remove('hide');$('rmRec').classList.remove('hide');state=null}
+function clearBlob(){blob=null;blobName='';$('rec').value='';$('prev').removeAttribute('src');$('prev').classList.add('hide');$('rmRec').classList.add('hide');$('recMsg').textContent='';state=null}
+$('rec').onchange=e=>{const f=e.target.files[0];if(!f){return}
+ if(f.size>MAXMB*1048576){clearBlob();$('recMsg').textContent='That file is bigger than '+MAXMB+' MB. Please pick a shorter recording.';return}
+ $('recMsg').textContent=f.name;setBlob(f,f.name)};
+$('rmRec').onclick=clearBlob;
+if(window.MediaRecorder&&navigator.mediaDevices&&location.protocol==='https:')$('recBtn').classList.remove('hide');
+$('recBtn').onclick=async()=>{
+ if(mr&&mr.state==='recording'){mr.stop();return}
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){$('recMsg').textContent='The microphone is not allowed. You can pick a file instead.';return}
+ const mt=MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4':'audio/webm',ch=[];
+ mr=new MediaRecorder(stream,{mimeType:mt});mr.ondataavailable=e=>ch.push(e.data);
+ mr.onstop=()=>{stream.getTracks().forEach(t=>t.stop());$('recBtn').textContent='🎙️ Record again';
+  const b=new Blob(ch,{type:mt});$('rec').value='';
+  if(b.size>MAXMB*1048576){$('recMsg').textContent='That recording is too long. Please make it shorter.';return}
+  setBlob(b,'recording.'+(mt==='audio/mp4'?'m4a':'webm'));$('recMsg').textContent='Recorded. Check it with play, or record again.'};
+ mr.start();$('recBtn').textContent='⏹️ Stop';$('recMsg').textContent='Recording…'};
+function upload(url,fd,onp){return new Promise((res,rej)=>{const x=new XMLHttpRequest();x.open('POST',url);
+ if(onp)x.upload.onprogress=e=>{if(e.lengthComputable)onp(Math.round(e.loaded/e.total*100))};
+ x.onload=()=>{try{const j=JSON.parse(x.responseText);if(x.status<300&&j.secure_url)res(j.secure_url);else rej(new Error((j.error&&j.error.message)||'upload failed'))}catch(e){rej(e)}};
+ x.onerror=()=>rej(new Error('network error'));x.send(fd)})}
+function txt(obj,name,preset,pid){const fd=new FormData();fd.append('file',new Blob([JSON.stringify(obj,null,2)],{type:'text/plain'}),name);fd.append('upload_preset',preset);fd.append('public_id',pid);return fd}
+function showProg(p,t){$('prog').classList.remove('hide');$('barI').style.width=p+'%';$('progT').textContent=t}
+$('f').onsubmit=async e=>{e.preventDefault();const err=$('err');err.textContent='';
+ const text=$('text').value.trim();
+ if(!text&&!blob){err.textContent='Please type some Pohnpeian or add a recording (or both).';return}
+ if(!$('c_adult').checked||!$('c_tools').checked){err.textContent='Please tick the two required permission boxes.';return}
+ if($('website').value){finish(contributor(),true);return}
+ $('send').disabled=true;$('send').textContent='Sending…';
+ try{
+  if(!state){const d=new Date(),iso=d.toISOString();state={id:iso.replace(/[-:]/g,'').replace(/\.\d+/,'')+'-'+rnd(6),iso,cid:contributor(),rec:'',recDone:false,mainDone:false,contDone:false}}
+  const s=state;
+  if(blob&&!s.recDone){showProg(0,'Uploading recording…');
+   const fd=new FormData();fd.append('file',blob,blobName);fd.append('upload_preset',PRESET);fd.append('public_id','rec_'+s.id);fd.append('context','sub_id='+s.id+'|contributor='+s.cid+'|lang=Pohnpeian');
+   s.rec=await upload(API+'/video/upload',fd,p=>showProg(p,'Uploading recording… '+p+'%'));s.recDone=true}
+  if(!s.mainDone){showProg(100,'Sending…');
+   await upload(API+'/raw/upload',txt({submission_id:s.id,contributor_id:s.cid,timestamp_utc:s.iso,text,english_meaning:$('eng').value.trim(),context:$('ctx').value.trim(),municipality:$('muni').value,register:$('reg').value,own_or_permitted:$('own').checked,consent_version:CONSENT_VERSION,c_adult:$('c_adult').checked,c_tools:$('c_tools').checked,c_synth:$('c_synth').checked,c_public:$('c_public').checked,recording_url:s.rec,page:location.origin+location.pathname,user_agent:navigator.userAgent.slice(0,200)},'sub_'+s.id+'.txt',PRESET,'sub_'+s.id+'.txt'));s.mainDone=true}
+  const contact=$('contact').value.trim();
+  if(contact&&!s.contDone){await upload(API+'/raw/upload',txt({contributor_id:s.cid,submission_id:s.id,timestamp_utc:s.iso,contact},'contact_'+s.id+'.txt',PRESET_C,'contact_'+s.id+'.txt'));s.contDone=true}
+  finish(s.cid,false,!!contact)
+ }catch(ex){err.textContent='Sorry, sending did not work ('+ex.message+'). Your answers are still here. Please press Send again.';$('send').disabled=false;$('send').textContent='Send ✓'}};
+function finish(cid,fake,hasContact){$('f').classList.add('hide');$('done').classList.remove('hide');$('codeOut').textContent=cid;
+ $('doneTxt').textContent=(hasContact||fake)?'We got it. It will be translated into English and sent back using the contact you gave.':'We got it. You did not leave a contact, so we cannot send the translation back.';window.scrollTo(0,0)}
+$('again').onclick=()=>{$('f').reset();clearBlob();state=null;$('prog').classList.add('hide');$('send').disabled=false;$('send').textContent='Send ✓';$('recBtn').textContent='🎙️ Record now';$('done').classList.add('hide');$('f').classList.remove('hide');window.scrollTo(0,0)};
+</script></body></html>
